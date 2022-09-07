@@ -171,7 +171,7 @@ const ParkingSpace = () => {
     const handlePayment = () => {
 
         let exitedCar: any = parkingSlots.filter((item: any) => item.slotNum == exitNo)
-        console.log(exitedCar)
+
         let carNumber = exitedCar[0].carNum
         let body: any = { "car-registration": carNumber, charge: parkingCharge }
 
@@ -220,7 +220,7 @@ const ParkingSpace = () => {
                 {parkingSlots && parkingSlots.map((item: ParkingSlots) => (
 
                     <Grid item xs={4} key={item.slotNum}>
-                        <Card sx={{ minHeight: 200, boxShadow: "0px 0px 8px -2px rgba(0,0,0,0.75)", }} id={`parking-drawing-space-${item.slotNum}`}>
+                        <Card sx={{ minHeight: 250, boxShadow: "0px 0px 8px -2px rgba(0,0,0,0.75)", }} id={`parking-drawing-space-${item.slotNum}`}>
                             <CardContent>
                                 <Typography sx={{ fontSize: 20, fontWeight: 700 }} color="secondary" gutterBottom>
                                     Car Parking
