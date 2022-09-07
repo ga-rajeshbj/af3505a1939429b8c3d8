@@ -11,6 +11,9 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { TextField } from '@mui/material';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -38,7 +41,7 @@ const ParkingSpace = () => {
     const [parkTime, setParkTime] = useState<number>(0)
     const [parkingCharge, setParkingCharge] = useState<any>("")
 
-
+    const [enterTime, setEnterTime] = useState<any>("")
     const [exitNo, setExitNo] = useState<number>(0)
 
     const handleClose = () => setOpen(false);
@@ -83,6 +86,8 @@ const ParkingSpace = () => {
         setOpen(true)
 
         setParkTime(CurrentTimeSec)
+        setCarNum("")
+        setEnterTime(`${today.getHours()}:${today.getMinutes()}`)
     };
 
 
@@ -100,7 +105,8 @@ const ParkingSpace = () => {
 
 
         if (allocateSlots.length === 0) {
-            alert("no empty space")
+
+            toast('Parking Slots Full');
         } else {
 
 
@@ -199,9 +205,9 @@ const ParkingSpace = () => {
     return (
         <div>
 
-            <h1>Parking Slots</h1>
+            <h1 data-testid="heading">Parking Slots</h1>
             <br />
-            <Button onClick={handleOpen} variant="contained" color="primary" > ALLOCATe random space</Button>
+            <Button onClick={handleOpen} variant="contained" color="primary" data-testid="allocat-btn" >allocate random space</Button>
             <br />
             <br />
             <br />
@@ -256,7 +262,9 @@ const ParkingSpace = () => {
             >
                 <Box sx={style}>
 
-
+                    <Typography variant="h5" component="h5" sx={{ my: 2 }} >
+                        Park Car
+                    </Typography>
                     <form onSubmit={handleSubmit}>
                         <div>
                             <TextField id="parking-drawing-registration-input" label="Enter Car Number" variant="outlined" type={"text"} value={carNum} onChange={handleChange} />
@@ -269,6 +277,10 @@ const ParkingSpace = () => {
                         </div>
                     </form>
 
+                    <Typography variant="h6" component="h6" sx={{ my: 2 }}>
+                        Enter Car:{enterTime}
+                    </Typography>
+
                 </Box>
             </Modal>
 
@@ -280,21 +292,34 @@ const ParkingSpace = () => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h2" component="h2">
+                    <Typography variant="h2" component="h2" id="deregister-car-registration">
                         Exit Car
                     </Typography>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                    <Typography id="deregister-charge" variant="h6" component="h2" >
                         Parking Charge :{parkingCharge} $
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        <Button variant="contained" color="primary" onClick={handlePayment}>  Payment</Button>
+                        <Button id="deregister-payment-button" variant="contained" color="primary" onClick={handlePayment}>  Payment</Button>
                     </Typography>
 
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        <Button variant="contained" color="primary" onClick={handleCloseTwo}>  back</Button>
+                        <Button id="deregister-back-button" variant="contained" color="primary" onClick={handleCloseTwo}>  back</Button>
                     </Typography>
                 </Box>
             </Modal>
+
+
+            <ToastContainer
+                position="top-right"
+                autoClose={1000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
 
         </div>
     );

@@ -30,7 +30,7 @@ const LandingPage = () => {
         <div>
 
 
-            <h1>ADD SLOTS NUMBER </h1>
+            <h1 data-testid="heading">ADD SLOTS NUMBER </h1>
             <br />
             <form onSubmit={handleSubmit}>
                 <div>
