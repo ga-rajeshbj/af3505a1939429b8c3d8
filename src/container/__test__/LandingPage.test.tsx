@@ -26,3 +26,19 @@ test('heading sould be match the text', () => {
     const heading = screen.getByTestId("heading");
     expect(heading).toHaveTextContent("ADD SLOTS NUMBER");
 });
+
+
+test('heading sould be in the document', () => {
+    LandingComponent(<LandingPage />);
+    const btn = screen.getByTestId("sub-btn");
+    expect(btn).toBeInTheDocument();
+    expect(btn).toHaveTextContent("add slots");
+
+});
+
+
+test('heading sould be match the text', () => {
+    LandingComponent(<LandingPage />);
+    const input = screen.getByTestId("text-input");
+    expect(input).toBeInTheDocument()
+});

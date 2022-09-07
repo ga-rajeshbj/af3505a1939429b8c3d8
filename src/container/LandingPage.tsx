@@ -34,13 +34,13 @@ const LandingPage = () => {
             <br />
             <form onSubmit={handleSubmit}>
                 <div>
-                    <TextField id="parking-create-text-input" label="Enter Slot Number" variant="outlined" type={"number"} value={slotNum} onChange={handleChange} />
+                    <TextField data-testid="text-input" id="parking-create-text-input" label="Enter Slot Number" variant="outlined" type={"number"} value={slotNum} onChange={handleChange} />
 
                 </div>
                 <br />
 
                 <div>
-                    <Button variant="contained" color="primary" type='submit' id="parking-create-submit-button"> add slots</Button>
+                    <Button data-testid="sub-btn" variant="contained" color="primary" type='submit' id="parking-create-submit-button">add slots</Button>
                 </div>
             </form>
         </div>

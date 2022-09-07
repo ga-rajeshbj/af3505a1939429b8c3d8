@@ -219,26 +219,24 @@ const ParkingSpace = () => {
                 {parkingSlots && parkingSlots.map((item: ParkingSlots) => (
 
                     <Grid item xs={4} key={item.slotNum}>
-                        <Card sx={{ minHeight: 150 }} id={`parking-drawing-space-${item.slotNum}`}>
+                        <Card sx={{ minHeight: 200 }} id={`parking-drawing-space-${item.slotNum}`}>
                             <CardContent>
-                                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                <Typography sx={{ fontSize: 20, fontWeight: 700 }} color="secondary" gutterBottom>
                                     Car Parking
                                 </Typography>
 
-                                <Typography sx={{ mb: 1.5 }} color="text.secondary" id={`parking-drawing-space-number-${item.slotNum}`}>
+                                <Typography sx={{ mb: 1 }} color="primary" id={`parking-drawing-space-number-${item.slotNum}`}>
                                     Parking Slot: {item.slotNum}
                                 </Typography>
 
                             </CardContent>
-
-
                             {item.isParked &&
-                                <CardContent>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom id={`parking-drawing-registered-${item.slotNum}`}>
+                                <CardContent sx={{ m: 0, pb: 0 }}>
+                                    <Typography sx={{ fontSize: 17 }} color="text.secondary" gutterBottom id={`parking-drawing-registered-${item.slotNum}`}>
                                         Car Number : {item.carNum}
                                     </Typography>
 
-                                    <CardActions>
+                                    <CardActions sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                                         <Button size="small" variant="contained" color="primary" onClick={() => handleExit(item)}>Exit Car</Button>
                                     </CardActions>
 
@@ -262,7 +260,7 @@ const ParkingSpace = () => {
             >
                 <Box sx={style}>
 
-                    <Typography variant="h5" component="h5" sx={{ my: 2 }} >
+                    <Typography variant="h5" component="h5" sx={{ my: 2, fontWeight: 600, color: "violet" }} >
                         Park Car
                     </Typography>
                     <form onSubmit={handleSubmit}>
@@ -292,7 +290,7 @@ const ParkingSpace = () => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <Typography variant="h2" component="h2" id="deregister-car-registration">
+                    <Typography variant="h2" component="h2" id="deregister-car-registration" data-testid="deregister-car-heading">
                         Exit Car
                     </Typography>
                     <Typography id="deregister-charge" variant="h6" component="h2" >

@@ -32,3 +32,5 @@ test('button to in the document', () => {
     const btn = screen.getByTestId("allocat-btn");
     expect(btn).toBeInTheDocument()
 });
+
+
