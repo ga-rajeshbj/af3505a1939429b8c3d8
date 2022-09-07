@@ -87,6 +87,7 @@ const ParkingSpace = () => {
 
         setParkTime(CurrentTimeSec)
         setCarNum("")
+        setExitNo(0)
         setEnterTime(`${today.getHours()}:${today.getMinutes()}`)
     };
 
@@ -213,13 +214,13 @@ const ParkingSpace = () => {
             <br />
 
 
-            <Grid container spacing={2}>
+            <Grid container spacing={2} sx={{ px: 2 }}>
 
 
                 {parkingSlots && parkingSlots.map((item: ParkingSlots) => (
 
                     <Grid item xs={4} key={item.slotNum}>
-                        <Card sx={{ minHeight: 200 }} id={`parking-drawing-space-${item.slotNum}`}>
+                        <Card sx={{ minHeight: 200, boxShadow: "0px 0px 8px -2px rgba(0,0,0,0.75)", }} id={`parking-drawing-space-${item.slotNum}`}>
                             <CardContent>
                                 <Typography sx={{ fontSize: 20, fontWeight: 700 }} color="secondary" gutterBottom>
                                     Car Parking
@@ -290,17 +291,15 @@ const ParkingSpace = () => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <Typography variant="h2" component="h2" id="deregister-car-registration" data-testid="deregister-car-heading">
+                    <Typography sx={{ fontWeight: 700 }} variant="h4" component="h4" id="deregister-car-registration" data-testid="deregister-car-heading">
                         Exit Car
                     </Typography>
                     <Typography id="deregister-charge" variant="h6" component="h2" >
                         Parking Charge :{parkingCharge} $
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        <Button id="deregister-payment-button" variant="contained" color="primary" onClick={handlePayment}>  Payment</Button>
-                    </Typography>
+                        <Button sx={{ mr: 1 }} id="deregister-payment-button" variant="contained" color="primary" onClick={handlePayment}>  Payment</Button>
 
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                         <Button id="deregister-back-button" variant="contained" color="primary" onClick={handleCloseTwo}>  back</Button>
                     </Typography>
                 </Box>
@@ -317,9 +316,10 @@ const ParkingSpace = () => {
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
+
             />
 
-        </div>
+        </div >
     );
 };
 
