@@ -182,6 +182,7 @@ const ParkingSpace = () => {
             })
             .catch((err) => {
                 console.log(err)
+                return
             })
         setParkingSlots(parkingSlots.map((item: ParkingSlots) => {
 
